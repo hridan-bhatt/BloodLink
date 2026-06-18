@@ -20,9 +20,13 @@ A blood donation platform connecting donors with recipients in real time.
 ## Project Structure
 
 bloodlink/
+
 ├── frontend/       # Android app
+
 ├── backend/        # Spring Boot REST API
+
 └── db/             # Database schema (schema.sql)
+
 
 ## Database Setup
 
