@@ -1,0 +1,10 @@
+# Spring Boot
+backend/target/
+backend/src/main/resources/application.properties
+*.log
+
+# General
+.DS_Store
+*.class
+__pycache__/
+.env
