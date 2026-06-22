@@ -1,12 +1,21 @@
 package com.example.bloodlink;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.util.Patterns;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +28,63 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button btnRegister=findViewById(R.id.btnRegister);
+        MaterialButton btnDonor=findViewById(R.id.btnDonor);
+        MaterialButton btnRecipient=findViewById(R.id.btnRecipient);
+        Button btnLogin=findViewById(R.id.btnLogin);
+
+
+        TextInputLayout emailLayout = findViewById(R.id.emailLayout);
+        TextInputLayout passwordLayout = findViewById(R.id.passwordLayout);
+        emailLayout.getEditText().addTextChangedListener(new android.text.TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) { emailLayout.setError(null); }
+            public void afterTextChanged(android.text.Editable s) {}
+        });
+        passwordLayout.getEditText().addTextChangedListener(new android.text.TextWatcher() {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) { passwordLayout.setError(null); }
+            public void afterTextChanged(android.text.Editable s) {}
+        });
+
+        btnLogin.setOnClickListener(n->{
+            String email = emailLayout.getEditText().getText().toString().trim();
+            String password = passwordLayout.getEditText().getText().toString().trim();
+            if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                emailLayout.setError("Enter a valid email address");
+                return;
+            }
+            if(password.isEmpty()){
+                passwordLayout.setError("Password cannot be empty");
+                return;
+            }
+        });
+
+        btnRegister.setOnClickListener(n->{
+            Intent intent=new Intent(MainActivity.this,SignUpActivity.class);
+            startActivity(intent);
+        });
+
+
+        btnRecipient.setOnClickListener(n->{
+
+
+            btnDonor.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.white)));
+            btnRecipient.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.blood_red)));
+            btnDonor.setTextColor(ContextCompat.getColor(this,R.color.blood_red));
+            btnRecipient.setTextColor(ContextCompat.getColor(this,R.color.white));
+            btnDonor.setStrokeWidth(4);
+            btnDonor.setStrokeColor(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.blood_red)));
+        });
+
+        btnDonor.setOnClickListener(n->{
+            btnDonor.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.blood_red)));
+            btnRecipient.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.white)));
+            btnDonor.setTextColor(ContextCompat.getColor(this,R.color.white));
+            btnDonor.setStrokeWidth(0);
+            btnRecipient.setTextColor(ContextCompat.getColor(this,R.color.blood_red));
         });
     }
 }
