@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodLink">
         <activity
+            android:name=".ProfileSetupActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
