@@ -3,11 +3,13 @@ package com.example.BloodLink.entity;
 
 import com.example.BloodLink.enums.*;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name="users")
+@Data
 public class User {
     @Id//this tell JPA hibernate that this userId variable is the primary key sort of
     @GeneratedValue(strategy= GenerationType.IDENTITY)//this is like autoincrement in sql-objects datatype
