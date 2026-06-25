@@ -1,5 +1,6 @@
 package com.example.bloodlink;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,13 +18,14 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class ProfileSetupActivity extends AppCompatActivity {
+    String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
 
-
+        role=getIntent().getStringExtra("ROLE");
         MaterialAutoCompleteTextView actBloodGroup=findViewById(R.id.actBloodGroup);
         MaterialAutoCompleteTextView actState=findViewById(R.id.actState);
         TextInputLayout bloodGroupLayout=findViewById(R.id.bloodGroupLayout);
@@ -62,9 +64,18 @@ public class ProfileSetupActivity extends AppCompatActivity {
                 return;
             }
             Toast.makeText(this,"Profile Setup Complete!",Toast.LENGTH_SHORT).show();
+            Intent intent;
+            if("DONOR".equals(role)){
+                intent=new Intent(ProfileSetupActivity.this, DashboardDonorActivity.class);
+            }
+            else{
+                intent=new Intent(ProfileSetupActivity.this, DashBoardRecipient.class);
+            }
+            startActivity(intent);
+            finish();
         });
-    tvBack.setOnClickListener(n->finish());
-    }
+    tvBack.setOnClickListener(n->finish());}
+
 
 
 }

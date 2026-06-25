@@ -18,6 +18,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class SignUpActivity extends AppCompatActivity {
+    private String selectedRole = "DONOR";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,6 @@ public class SignUpActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         MaterialButton btnDonor=findViewById(R.id.btnDonor);
         MaterialButton btnRecipient=findViewById(R.id.btnRecipient);
         Button btnCreateAcc=findViewById(R.id.btnContinue);
@@ -93,11 +94,12 @@ public class SignUpActivity extends AppCompatActivity {
                 return;
             }
             Intent intent=new Intent(SignUpActivity.this,ProfileSetupActivity.class);
+            intent.putExtra("ROLE",selectedRole);
             startActivity(intent);
         });
         btnRecipient.setOnClickListener(n->{
 
-
+            selectedRole = "RECIPIENT";
             btnDonor.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.white)));
             btnRecipient.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.blood_red)));
             btnDonor.setTextColor(ContextCompat.getColor(this,R.color.blood_red));
@@ -107,6 +109,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
         btnDonor.setOnClickListener(n->{
+            selectedRole = "DONOR";
             btnDonor.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.blood_red)));
             btnRecipient.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.white)));
             btnDonor.setTextColor(ContextCompat.getColor(this,R.color.white));

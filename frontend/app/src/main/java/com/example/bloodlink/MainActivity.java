@@ -18,6 +18,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class MainActivity extends AppCompatActivity {
+    private String selectedRole="DONOR";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
                 passwordLayout.setError("Password cannot be empty");
                 return;
             }
+            Intent intent;
+            if("DONOR".equals(selectedRole)){
+                intent=new Intent(MainActivity.this, DashboardDonorActivity.class);
+            }
+            else{
+                intent=new Intent(MainActivity.this, DashBoardRecipient.class);
+            }
+            startActivity(intent);
+            finish();
         });
 
         btnRegister.setOnClickListener(n->{
@@ -70,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnRecipient.setOnClickListener(n->{
 
-
+            selectedRole="RECIPIENT";
             btnDonor.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.white)));
             btnRecipient.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.blood_red)));
             btnDonor.setTextColor(ContextCompat.getColor(this,R.color.blood_red));
@@ -80,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnDonor.setOnClickListener(n->{
+            selectedRole="DONOR";
             btnDonor.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.blood_red)));
             btnRecipient.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this,R.color.white)));
             btnDonor.setTextColor(ContextCompat.getColor(this,R.color.white));
