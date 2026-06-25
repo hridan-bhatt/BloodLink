@@ -1,6 +1,9 @@
 package com.example.bloodlink;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,16 @@ public class CreateRequestActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        TextView tvBack=findViewById(R.id.tvBack);
+        tvBack.setOnClickListener(v->finish());
+
+
+        Button btnCreateRequest=findViewById(R.id.btnCreateRequest);
+        btnCreateRequest.setOnClickListener(n->{
+            Toast.makeText(CreateRequestActivity.this,"Requested Created Succesfully",Toast.LENGTH_SHORT).show();
+            finish();
         });
     }
 }
