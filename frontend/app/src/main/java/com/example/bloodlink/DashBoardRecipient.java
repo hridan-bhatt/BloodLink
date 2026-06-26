@@ -15,6 +15,14 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DashBoardRecipient extends AppCompatActivity {
+    private TextView tvUserName;
+    private TextView tvUserMeta;
+
+    private void loadUserData() {
+        User user = SessionManager.currentUser;
+        tvUserName.setText(user.getFullName());
+        tvUserMeta.setText(user.getBloodGroup() + " • " + user.getCity());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +31,10 @@ public class DashBoardRecipient extends AppCompatActivity {
         setContentView(R.layout.activity_dash_board_recipient);
 
         User user = SessionManager.currentUser;
+        tvUserName = findViewById(R.id.tvUserName);
+        tvUserMeta = findViewById(R.id.tvUserMeta);
+        loadUserData();
 
-        TextView tvUserName = findViewById(R.id.tvUserName);
-        TextView tvUserMeta = findViewById(R.id.tvUserMeta);
-
-        tvUserName.setText(user.getFullName());
-        tvUserMeta.setText(user.getBloodGroup() + " • " + user.getCity());
 
         Button btnCreateRequest = findViewById(R.id.btnCreateRequest);
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
@@ -55,5 +61,10 @@ public class DashBoardRecipient extends AppCompatActivity {
 
             return true;
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadUserData();
     }
 }

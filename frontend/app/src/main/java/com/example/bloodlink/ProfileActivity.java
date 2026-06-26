@@ -15,6 +15,40 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
 
+
+    private void loadUserData() {
+        User user = SessionManager.currentUser;
+
+        TextView tvAvatar=findViewById(R.id.tvAvatar);
+
+        TextView tvUserName = findViewById(R.id.tvUserName);
+        TextView tvRole = findViewById(R.id.tvRole);
+        TextView tvEmail = findViewById(R.id.tvEmail);
+        TextView tvPhone = findViewById(R.id.tvPhone);
+        TextView tvBloodGroup = findViewById(R.id.tvBloodGroup);
+        TextView tvCity = findViewById(R.id.tvCity);
+        TextView tvState = findViewById(R.id.tvState);
+
+        tvUserName.setText(user.getFullName());
+        tvEmail.setText(user.getEmail());
+        tvRole.setText(user.getRole());
+        tvPhone.setText(user.getPhone());
+        tvBloodGroup.setText(user.getBloodGroup());
+        tvCity.setText(user.getCity());
+        tvState.setText(user.getState());
+
+        String[] names = user.getFullName().trim().split("\\s+");
+        StringBuilder initials = new StringBuilder();
+
+        for (String name : names) {
+            if (!name.isEmpty()) {
+                initials.append(Character.toUpperCase(name.charAt(0)));
+            }
+        }
+
+        tvAvatar.setText(initials.toString());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,36 +64,13 @@ public class ProfileActivity extends AppCompatActivity {
             finish();
             return;
         }
-        TextView tvAvatar=findViewById(R.id.tvAvatar);
-        TextView tvUserName = findViewById(R.id.tvUserName);
-        TextView tvRole = findViewById(R.id.tvRole);
-        TextView tvEmail = findViewById(R.id.tvEmail);
-        TextView tvPhone = findViewById(R.id.tvPhone);
-        TextView tvBloodGroup = findViewById(R.id.tvBloodGroup);
-        TextView tvCity = findViewById(R.id.tvCity);
-        TextView tvState = findViewById(R.id.tvState);
+        loadUserData();
 
         Button btnEditProfile=findViewById(R.id.btnEditProfile);
         Button btnLogout=findViewById(R.id.btnLogout);
         BottomNavigationView bottomNav=findViewById(R.id.bottomNav);
 
-        tvUserName.setText(user.getFullName());
-        tvEmail.setText(user.getEmail());
-        tvRole.setText(user.getRole());
-        tvPhone.setText(user.getPhone());
-        tvBloodGroup.setText(user.getBloodGroup());
-        tvCity.setText(user.getCity());
-        tvState.setText(user.getState());
 
-
-        String[] names=user.getFullName().trim().split("\\s+");
-        StringBuilder initials=new StringBuilder();
-        for (String name:names){
-            if(!name.isEmpty()){
-                initials.append(Character.toUpperCase(name.charAt(0)));
-            }
-        }
-        tvAvatar.setText(initials.toString());
         bottomNav.getMenu().clear();
         if ("DONOR".equals(user.getRole())) {
             bottomNav.inflateMenu(R.menu.donor_bottom_nav);
@@ -96,5 +107,11 @@ public class ProfileActivity extends AppCompatActivity {
         btnEditProfile.setOnClickListener(n->{
             startActivity(new Intent(ProfileActivity.this,EditProfileActivity.class));
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        loadUserData();
     }
 }

@@ -12,17 +12,26 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.w3c.dom.Text;
+
 public class DashboardDonorActivity extends AppCompatActivity {
+    private TextView tvUserName;
+    private TextView tvUserMeta;
+    private void loadUserData() {
+        User user = SessionManager.currentUser;
+        tvUserName.setText(user.getFullName());
+        tvUserMeta.setText(user.getBloodGroup() + " • " + user.getCity());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_dashboard_donor);
-        User user=SessionManager.currentUser;
-        TextView tvUserName=findViewById(R.id.tvUserName);
-        TextView tvUserMeta=findViewById(R.id.tvUserMeta);
-        tvUserMeta.setText(user.getBloodGroup()+" . "+user.getCity());
+        tvUserName = findViewById(R.id.tvUserName);
+        tvUserMeta = findViewById(R.id.tvUserMeta);
+        loadUserData();
+
         BottomNavigationView bottomNav=findViewById(R.id.bottomNav);
         bottomNav.setSelectedItemId(R.id.nav_home);
         bottomNav.setOnItemSelectedListener(item->{
@@ -35,5 +44,10 @@ public class DashboardDonorActivity extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadUserData();
     }
 }
