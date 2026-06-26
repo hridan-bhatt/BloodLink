@@ -4,252 +4,274 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light">
-
-    <ImageView
-        android:id="@+id/ecgLine"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/ecg_line"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvBloodLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/bebas_neue"
-        android:letterSpacing="0.15"
-        android:text="BLOODLINK"
-        android:textSize="36sp"
-        android:textColor="@color/black_text"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/ecgLine"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvTagline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/bebas_neue"
-        android:letterSpacing="0.2"
-        android:text="DONOR DASHBOARD"
-        android:textColor="@color/gray_text"
-        android:textSize="14sp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tvBloodLink"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Welcome row -->
-    <TextView
-        android:id="@+id/tvGreeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome back,"
-        android:textColor="@color/gray_text"
-        android:textSize="12sp"
-        android:fontFamily="@font/poppins_regular"
-        android:layout_marginTop="28dp"
-        android:layout_marginStart="24dp"
-        app:layout_constraintTop_toBottomOf="@id/tvTagline"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvUserName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hridan Bhatt"
-        android:textColor="@color/black_text"
-        android:textSize="18sp"
-        android:fontFamily="@font/poppins_semibold"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintTop_toBottomOf="@id/tvGreeting"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <TextView
-        android:id="@+id/tvUserMeta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="B+ · Ahmedabad"
-        android:textColor="@color/blood_red"
-        android:textSize="12sp"
-        android:fontFamily="@font/poppins_semibold"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintTop_toBottomOf="@id/tvUserName"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <ImageView
-        android:id="@+id/ivBell"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:src="@drawable/ic_bell"
-        android:layout_marginEnd="24dp"
-        app:tint="@color/blood_red"
-        app:layout_constraintTop_toTopOf="@id/tvGreeting"
-        app:layout_constraintBottom_toBottomOf="@id/tvUserMeta"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Divider -->
-    <View
-        android:id="@+id/divider"
-        android:layout_width="0dp"
-        android:layout_height="0.5dp"
-        android:background="@color/divider_gray"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/tvUserMeta"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- Stats section -->
-    <TextView
-        android:id="@+id/tvStatsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YOUR STATS"
-        android:textColor="@color/blood_red"
-        android:textSize="11sp"
-        android:letterSpacing="0.15"
-        android:fontFamily="@font/poppins_semibold"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/divider"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardDonations"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/divider_gray"
-        app:strokeWidth="1.5dp"
-        app:layout_constraintTop_toBottomOf="@id/tvStatsLabel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cardEligible">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Donations"
-                android:textColor="@color/gray_text"
-                android:textSize="11sp"
-                android:fontFamily="@font/poppins_regular"/>
-
-            <TextView
-                android:id="@+id/tvDonationCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4"
-                android:textColor="@color/blood_red"
-                android:textSize="22sp"
-                android:fontFamily="@font/poppins_semibold"
-                android:layout_marginTop="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lifetime"
-                android:textColor="@color/light_gray_text"
-                android:textSize="11sp"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="2dp"/>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardEligible"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="0dp"
-        app:strokeColor="@color/divider_gray"
-        app:strokeWidth="1.5dp"
-        app:layout_constraintTop_toBottomOf="@id/tvStatsLabel"
-        app:layout_constraintStart_toEndOf="@id/cardDonations"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Next eligible"
-                android:textColor="@color/gray_text"
-                android:textSize="11sp"
-                android:fontFamily="@font/poppins_regular"/>
-
-            <TextView
-                android:id="@+id/tvNextEligible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aug 12"
-                android:textColor="@color/blood_red"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_semibold"
-                android:layout_marginTop="6dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="56 days away"
-                android:textColor="@color/light_gray_text"
-                android:textSize="11sp"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="2dp"/>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Nearby requests -->
-    <TextView
-        android:id="@+id/tvRequestsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NEARBY REQUESTS"
-        android:textColor="@color/blood_red"
-        android:textSize="11sp"
-        android:letterSpacing="0.15"
-        android:fontFamily="@font/poppins_semibold"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/cardDonations"
-        app:layout_constraintStart_toStartOf="parent"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvRequests"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/tvRequestsLabel"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNav"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <!-- Bottom Nav -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/ecgLine"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ecg_line"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvBloodLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.15"
+                android:text="BLOODLINK"
+                android:textSize="36sp"
+                android:textColor="@color/black_text"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@id/ecgLine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvTagline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bebas_neue"
+                android:letterSpacing="0.2"
+                android:text="DONOR DASHBOARD"
+                android:textColor="@color/gray_text"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintTop_toBottomOf="@id/tvBloodLink"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/tvGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome back,"
+                android:textColor="@color/gray_text"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tvTagline"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hridan Bhatt"
+                android:textColor="@color/black_text"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@id/tvGreeting"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvUserMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B+ · Ahmedabad"
+                android:textColor="@color/blood_red"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="2dp"
+                app:layout_constraintTop_toBottomOf="@id/tvUserName"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ivBell"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_bell"
+                android:layout_marginEnd="24dp"
+                app:tint="@color/blood_red"
+                app:layout_constraintTop_toTopOf="@id/tvGreeting"
+                app:layout_constraintBottom_toBottomOf="@id/tvUserMeta"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_gray"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tvUserMeta"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+            <TextView
+                android:id="@+id/tvStatsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOUR STATS"
+                android:textColor="@color/blood_red"
+                android:textSize="11sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDonations"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvStatsLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cardEligible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Donations"
+                        android:textColor="@color/gray_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/poppins_regular"/>
+
+                    <TextView
+                        android:id="@+id/tvDonationCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:textColor="@color/blood_red"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lifetime"
+                        android:textColor="@color/light_gray_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="2dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardEligible"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp"
+                app:layout_constraintTop_toBottomOf="@id/tvStatsLabel"
+                app:layout_constraintStart_toEndOf="@id/cardDonations"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Next eligible"
+                        android:textColor="@color/gray_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/poppins_regular"/>
+
+                    <TextView
+                        android:id="@+id/tvNextEligible"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Aug 12"
+                        android:textColor="@color/blood_red"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginTop="6dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="56 days away"
+                        android:textColor="@color/light_gray_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="2dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/tvRequestsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEARBY REQUESTS"
+                android:textColor="@color/blood_red"
+                android:textSize="11sp"
+                android:letterSpacing="0.15"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/cardDonations"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRequests"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintTop_toBottomOf="@id/tvRequestsLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
