@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,14 +21,39 @@ public class DashBoardRecipient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_dash_board_recipient);
-        Button btnCreateRequest=findViewById(R.id.btnCreateRequest);
+
+        User user = SessionManager.currentUser;
+
+        TextView tvUserName = findViewById(R.id.tvUserName);
+        TextView tvUserMeta = findViewById(R.id.tvUserMeta);
+
+        tvUserName.setText(user.getFullName());
+        tvUserMeta.setText(user.getBloodGroup() + " • " + user.getCity());
+
+        Button btnCreateRequest = findViewById(R.id.btnCreateRequest);
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
 
-        btnCreateRequest.setOnClickListener(n->{
-            Intent intent=new Intent(DashBoardRecipient.this,CreateRequestActivity.class);
+        btnCreateRequest.setOnClickListener(v -> {
+            Intent intent = new Intent(
+                    DashBoardRecipient.this,
+                    CreateRequestActivity.class
+            );
             startActivity(intent);
         });
 
         bottomNav.setSelectedItemId(R.id.nav_home);
+
+        bottomNav.setOnItemSelectedListener(item -> {
+
+            if (item.getItemId() == R.id.nav_profile) {
+                startActivity(new Intent(
+                        DashBoardRecipient.this,
+                        ProfileActivity.class
+                ));
+                return true;
+            }
+
+            return true;
+        });
     }
 }

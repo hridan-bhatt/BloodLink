@@ -62,14 +62,24 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             Intent intent;
-            if("DONOR".equals(selectedRole)){
+            User user;
+            if ("DONOR".equals(selectedRole)) {
+                user = new User("Hridan Bhatt",email,"9876543210","B+","Vadodara","Gujarat","DONOR");
+            } else {
+                user = new User("Hridan Bhatt",email,"9876543210","B+","Vadodara","Gujarat","RECIPIENT");
+            }
+
+            SessionManager.currentUser=user;
+            if("DONOR".equals(user.getRole())){
                 intent=new Intent(MainActivity.this, DashboardDonorActivity.class);
             }
             else{
                 intent=new Intent(MainActivity.this, DashBoardRecipient.class);
             }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
+
         });
 
         btnRegister.setOnClickListener(n->{

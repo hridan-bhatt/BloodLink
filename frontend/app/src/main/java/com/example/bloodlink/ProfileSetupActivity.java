@@ -26,6 +26,9 @@ public class ProfileSetupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_setup);
 
         role=getIntent().getStringExtra("ROLE");
+        String fullName = getIntent().getStringExtra("FULL_NAME");
+        String email = getIntent().getStringExtra("EMAIL");
+        String phone = getIntent().getStringExtra("PHONE");
         MaterialAutoCompleteTextView actBloodGroup=findViewById(R.id.actBloodGroup);
         MaterialAutoCompleteTextView actState=findViewById(R.id.actState);
         TextInputLayout bloodGroupLayout=findViewById(R.id.bloodGroupLayout);
@@ -63,6 +66,8 @@ public class ProfileSetupActivity extends AppCompatActivity {
                 cityLayout.setError("Please Select a City");
                 return;
             }
+            User user=new User(fullName,email,phone,bloodGroup,city,state,role);
+            SessionManager.currentUser=user;
             Toast.makeText(this,"Profile Setup Complete!",Toast.LENGTH_SHORT).show();
             Intent intent;
             if("DONOR".equals(role)){
@@ -71,6 +76,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
             else{
                 intent=new Intent(ProfileSetupActivity.this, DashBoardRecipient.class);
             }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         });

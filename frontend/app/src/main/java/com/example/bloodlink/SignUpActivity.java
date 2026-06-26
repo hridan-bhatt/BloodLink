@@ -94,7 +94,12 @@ public class SignUpActivity extends AppCompatActivity {
                 return;
             }
             Intent intent=new Intent(SignUpActivity.this,ProfileSetupActivity.class);
-            intent.putExtra("ROLE",selectedRole);
+            intent.putExtra("FULL_NAME",fullName);
+            intent.putExtra("EMAIL",email);
+            intent.putExtra("PHONE", phone);
+            intent.putExtra("PASSWORD", password); // temporary, until backend
+            intent.putExtra("ROLE", selectedRole);
+
             startActivity(intent);
         });
         btnRecipient.setOnClickListener(n->{
