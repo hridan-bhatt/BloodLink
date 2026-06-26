@@ -1,10 +1,637 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DonorListActivity">
+    android:background="@color/background_light">
+
+    <ImageView
+        android:id="@+id/ecgLine"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/ecg_line"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvBloodLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bebas_neue"
+        android:letterSpacing="0.15"
+        android:text="BLOODLINK"
+        android:textSize="36sp"
+        android:textColor="@color/black_text"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/ecgLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bebas_neue"
+        android:letterSpacing="0.2"
+        android:text="FIND A DONOR"
+        android:textColor="@color/gray_text"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBloodLink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Back"
+        android:textColor="@color/blood_red"
+        android:textSize="13sp"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTagline"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_gray"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
+        app:startIconDrawable="@drawable/ic_search"
+        app:startIconTint="@color/gray_text"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search by name or city..."
+            android:inputType="text"
+            android:fontFamily="@font/poppins_regular"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/filtersScroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/searchLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="false">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A+"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A-"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B+"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B-"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O+"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="O-"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AB+"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.chip.Chip
+                style="@style/Widget.MaterialComponents.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AB-"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="12sp"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/tvDonorsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DONORS NEAR YOU"
+        android:textColor="@color/blood_red"
+        android:textSize="11sp"
+        android:letterSpacing="0.15"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/filtersScroll"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/tvDonorsLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="24dp">
+
+            <!-- Card 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDonor1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvAvatar1"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:text="AK"
+                        android:textColor="@color/blood_red"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:background="@drawable/bg_avatar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Arjun Kumar"
+                        android:textColor="@color/black_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toTopOf="@id/tvAvatar1"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar1"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron1"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Ahmedabad, Gujarat"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar1"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar1"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron1"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="🩸 B+"
+                        android:textColor="@color/blood_red"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar1"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar1"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron1"/>
+
+                    <TextView
+                        android:id="@+id/tvChevron1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="@color/gray_text"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDonor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvAvatar2"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:text="MP"
+                        android:textColor="@color/blood_red"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:background="@drawable/bg_avatar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Meera Patel"
+                        android:textColor="@color/black_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toTopOf="@id/tvAvatar2"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar2"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron2"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Surat, Gujarat"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar2"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar2"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron2"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="🩸 O+"
+                        android:textColor="@color/blood_red"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar2"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar2"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron2"/>
+
+                    <TextView
+                        android:id="@+id/tvChevron2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="@color/gray_text"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 3 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDonor3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvAvatar3"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:text="RS"
+                        android:textColor="@color/blood_red"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:background="@drawable/bg_avatar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Rahul Shah"
+                        android:textColor="@color/black_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toTopOf="@id/tvAvatar3"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar3"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron3"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Vadodara, Gujarat"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar3"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar3"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron3"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="🩸 A+"
+                        android:textColor="@color/blood_red"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar3"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar3"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron3"/>
+
+                    <TextView
+                        android:id="@+id/tvChevron3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="@color/gray_text"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 4 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDonor4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvAvatar4"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:text="PD"
+                        android:textColor="@color/blood_red"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:background="@drawable/bg_avatar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Priya Desai"
+                        android:textColor="@color/black_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toTopOf="@id/tvAvatar4"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar4"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron4"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Rajkot, Gujarat"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar4"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar4"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron4"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="🩸 AB+"
+                        android:textColor="@color/blood_red"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar4"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar4"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron4"/>
+
+                    <TextView
+                        android:id="@+id/tvChevron4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="@color/gray_text"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 5 -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDonor5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvAvatar5"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:text="NK"
+                        android:textColor="@color/blood_red"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:background="@drawable/bg_avatar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Neel Kothari"
+                        android:textColor="@color/black_text"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toTopOf="@id/tvAvatar5"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar5"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron5"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Gandhinagar, Gujarat"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar5"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar5"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron5"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="🩸 O-"
+                        android:textColor="@color/blood_red"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvAvatar5"
+                        app:layout_constraintStart_toEndOf="@id/tvAvatar5"
+                        app:layout_constraintEnd_toStartOf="@id/tvChevron5"/>
+
+                    <TextView
+                        android:id="@+id/tvChevron5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="›"
+                        android:textColor="@color/gray_text"
+                        android:textSize="20sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
