@@ -119,10 +119,8 @@ public class EditProfileActivity extends AppCompatActivity {
             user.setState(state);
             user.setCity(city);
 
-//            Toast.makeText(EditProfileActivity.this,"Profile Updated Successfully",Toast.LENGTH_SHORT).show();
-            Toast.makeText(this,
-                    user.getFullName(),
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(EditProfileActivity.this,"Profile Updated Successfully",Toast.LENGTH_SHORT).show();
+
             finish();
         });
     }
