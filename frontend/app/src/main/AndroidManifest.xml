@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodLink">
         <activity
+            android:name=".RequestHistory"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
@@ -29,7 +32,6 @@
         <activity
             android:name=".DonorListActivity"
             android:exported="false" />
-
         <activity
             android:name=".RequestDetailsActivity"
             android:exported="false" />

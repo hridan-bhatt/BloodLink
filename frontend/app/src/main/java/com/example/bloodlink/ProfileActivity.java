@@ -19,6 +19,12 @@ public class ProfileActivity extends AppCompatActivity {
     private void loadUserData() {
         User user = SessionManager.currentUser;
 
+        if(user==null){
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+            return;
+        }
+
         TextView tvAvatar=findViewById(R.id.tvAvatar);
 
         TextView tvUserName = findViewById(R.id.tvUserName);
@@ -79,22 +85,43 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         bottomNav.setSelectedItemId(R.id.nav_profile);
-        bottomNav.setOnItemSelectedListener(item->{
-            if(item.getItemId()==R.id.nav_home){
+        bottomNav.setOnItemSelectedListener(item -> {
+
+            if (item.getItemId() == R.id.nav_home) {
+
                 Intent intent;
-                if("DONOR".equals(user.getRole())){
-                    intent=new Intent(ProfileActivity.this, DashboardDonorActivity.class);
+
+                if ("DONOR".equals(user.getRole())) {
+                    intent = new Intent(ProfileActivity.this, DashboardDonorActivity.class);
+                } else {
+                    intent = new Intent(ProfileActivity.this, DashBoardRecipient.class);
                 }
-                else{
-                    intent=new Intent(ProfileActivity.this,DashBoardRecipient.class);
-                }
+
                 startActivity(intent);
                 finish();
                 return true;
             }
-            if(item.getItemId()==R.id.nav_profile){
+
+            if (item.getItemId() == R.id.nav_my_requests) {
+                startActivity(new Intent(ProfileActivity.this, ViewRequestsActivity.class));
                 return true;
             }
+
+            if (item.getItemId() == R.id.nav_history) {
+
+                if ("DONOR".equals(user.getRole())) {
+                    startActivity(new Intent(ProfileActivity.this, DonationHistoryActivity.class));
+                } else {
+                    startActivity(new Intent(ProfileActivity.this, RequestHistory.class));
+                }
+
+                return true;
+            }
+
+            if (item.getItemId() == R.id.nav_profile) {
+                return true;
+            }
+
             return false;
         });
         btnLogout.setOnClickListener(n->{

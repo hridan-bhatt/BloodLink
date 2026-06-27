@@ -25,10 +25,13 @@ public class EditProfileActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_profile);
 
-        User user=SessionManager.currentUser;
-        Toast.makeText(this,
-                "Current: " + user.getFullName(),
-                Toast.LENGTH_LONG).show();
+        User user = SessionManager.currentUser;
+
+        if(user==null){
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+            return;
+        }
         if(user==null){
             Intent intent=new Intent(EditProfileActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bebas_neue"
         android:letterSpacing="0.2"
-        android:text="DONATION HISTORY"
+        android:text="REQUEST HISTORY"
         android:textColor="@color/gray_text"
         android:textSize="14sp"
         android:layout_marginTop="4dp"
@@ -68,16 +68,15 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/tvHistoryLabel"
+        android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="YOUR DONATIONS"
-        android:textColor="@color/blood_red"
-        android:textSize="11sp"
-        android:letterSpacing="0.15"
-        android:fontFamily="@font/poppins_semibold"
+        android:text="View all your previous blood requests."
+        android:textColor="@color/gray_text"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_regular"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -87,7 +86,7 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="12dp"
         android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@id/tvHistoryLabel"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -98,9 +97,8 @@
             android:orientation="vertical"
             android:paddingBottom="24dp">
 
-
+            <!-- Card 1 - Fulfilled -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardHistory1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -115,122 +113,58 @@
                     android:padding="14dp">
 
                     <TextView
-                        android:id="@+id/tvBloodH1"
+                        android:id="@+id/tvBlood1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🩸 B+"
+                        android:text="B+"
                         android:textColor="@color/blood_red"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:fontFamily="@font/poppins_semibold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
 
                     <TextView
-                        android:id="@+id/tvDateH1"
+                        android:id="@+id/tvStatus1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12 Jan 2025"
-                        android:textColor="@color/gray_text"
+                        android:text="Fulfilled"
+                        android:textColor="#2E7D32"
                         android:textSize="12sp"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/poppins_semibold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
 
                     <TextView
-                        android:id="@+id/tvHospitalH1"
+                        android:id="@+id/tvHospital1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="📍 Civil Hospital, Ahmedabad"
                         android:textColor="@color/gray_text"
                         android:textSize="12sp"
                         android:fontFamily="@font/poppins_regular"
-                        android:layout_marginTop="6dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvBloodH1"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvBlood1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Donated to Riya Sharma"
-                        android:textColor="@color/light_gray_text"
-                        android:textSize="11sp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:layout_marginTop="4dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvHospitalH1"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardHistory2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:strokeColor="@color/divider_gray"
-                app:strokeWidth="1.5dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="14dp">
-
-                    <TextView
-                        android:id="@+id/tvBloodH2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🩸 B+"
-                        android:textColor="@color/blood_red"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/poppins_semibold"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/tvDateH2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5 Aug 2024"
-                        android:textColor="@color/gray_text"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins_regular"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-
-                    <TextView
-                        android:id="@+id/tvHospitalH2"
+                        android:id="@+id/tvUnitsDate1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="📍 Sterling Hospital, Ahmedabad"
-                        android:textColor="@color/gray_text"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:layout_marginTop="6dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvBloodH2"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Donated to Karan Mehta"
+                        android:text="2 Units  ·  27 Jun 2026"
                         android:textColor="@color/light_gray_text"
                         android:textSize="11sp"
                         android:fontFamily="@font/poppins_regular"
                         android:layout_marginTop="4dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvHospitalH2"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintTop_toBottomOf="@id/tvHospital1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
 
-
+            <!-- Card 2 - Open -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardHistory3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
@@ -245,50 +179,118 @@
                     android:padding="14dp">
 
                     <TextView
-                        android:id="@+id/tvBloodH3"
+                        android:id="@+id/tvBlood2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🩸 B+"
+                        android:text="O+"
                         android:textColor="@color/blood_red"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:fontFamily="@font/poppins_semibold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"/>
 
                     <TextView
-                        android:id="@+id/tvDateH3"
+                        android:id="@+id/tvStatus2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20 Feb 2024"
-                        android:textColor="@color/gray_text"
+                        android:text="Open"
+                        android:textColor="@color/blood_red"
                         android:textSize="12sp"
-                        android:fontFamily="@font/poppins_regular"
+                        android:fontFamily="@font/poppins_semibold"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
 
                     <TextView
-                        android:id="@+id/tvHospitalH3"
+                        android:id="@+id/tvHospital2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="📍 Sterling Hospital, Vadodara"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvBlood2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvUnitsDate2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="1 Unit  ·  20 Jun 2026"
+                        android:textColor="@color/light_gray_text"
+                        android:textSize="11sp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvHospital2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 3 - Cancelled -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider_gray"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvBlood3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="A-"
+                        android:textColor="@color/blood_red"
+                        android:textSize="22sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvStatus3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancelled"
+                        android:textColor="@color/gray_text"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_semibold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/tvHospital3"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="📍 Shalby Hospital, Surat"
                         android:textColor="@color/gray_text"
                         android:textSize="12sp"
                         android:fontFamily="@font/poppins_regular"
-                        android:layout_marginTop="6dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvBloodH3"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/tvBlood3"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/tvUnitsDate3"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Donated to Priya Desai"
+                        android:text="3 Units  ·  12 Jun 2026"
                         android:textColor="@color/light_gray_text"
                         android:textSize="11sp"
                         android:fontFamily="@font/poppins_regular"
                         android:layout_marginTop="4dp"
-                        app:layout_constraintTop_toBottomOf="@id/tvHospitalH3"
-                        app:layout_constraintStart_toStartOf="parent"/>
+                        app:layout_constraintTop_toBottomOf="@id/tvHospital3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>

@@ -21,6 +21,12 @@ public class DashBoardRecipient extends AppCompatActivity {
 
     private void loadUserData() {
         User user = SessionManager.currentUser;
+
+        if(user==null){
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+            return;
+        }
         tvUserName.setText(user.getFullName());
         tvUserMeta.setText(user.getBloodGroup() + " • " + user.getCity());
     }
@@ -50,12 +56,26 @@ public class DashBoardRecipient extends AppCompatActivity {
 
         bottomNav.setOnItemSelectedListener(item -> {
 
+            if (item.getItemId() == R.id.nav_home) {
+                return true;
+            }
+
+            if (item.getItemId() == R.id.nav_my_requests) {
+                startActivity(new Intent(DashBoardRecipient.this, ViewRequestsActivity.class));
+                return true;
+            }
+
+            if (item.getItemId() == R.id.nav_history) {
+                startActivity(new Intent(DashBoardRecipient.this, RequestHistory.class));
+                return true;
+            }
+
             if (item.getItemId() == R.id.nav_profile) {
                 startActivity(new Intent(DashBoardRecipient.this, ProfileActivity.class));
                 return true;
             }
 
-            return true;
+            return false;
         });
         tvViewAll.setOnClickListener(v ->
                 startActivity(new Intent(

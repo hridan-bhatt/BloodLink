@@ -85,13 +85,20 @@ public class SignUpActivity extends AppCompatActivity {
                 phoneLayout.setError("Enter a valid phone number");
                 return;
             }
-            if(password.isEmpty() || confirmPassword.isEmpty()){
+            if(password.isEmpty()){
                 passwordLayout.setError("Password cannot be empty");
+                return;
+            }
+            if(password.length()<8){
+                passwordLayout.setError("Password must be at least 8 characters");
                 return;
             }
             if(!confirmPassword.equals(password)){
                 confirmPasswordLayout.setError("Passwords should be matching");
                 return;
+            }
+            if(confirmPassword.isEmpty()){
+                confirmPasswordLayout.setError("Password cannot be empty");
             }
             Intent intent=new Intent(SignUpActivity.this,ProfileSetupActivity.class);
             intent.putExtra("FULL_NAME",fullName);
